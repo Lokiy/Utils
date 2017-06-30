@@ -15,8 +15,6 @@
  */
 package com.lokiy.utils;
 
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.Modifier;
@@ -30,12 +28,12 @@ import java.util.Arrays;
  * TypeUtil
  * Created by Luki on 2016/8/10.
  * Version:1
+ * modify from {@link com.google.gson.internal.$Gson$Types}
  */
 public class TypeUtil {
 
 	static final Type[] EMPTY_TYPE_ARRAY = new Type[]{};
 
-	@NonNull
 	public static ParameterizedTypeImpl getParameterizedType(Type rawType, Type type) {
 		return new ParameterizedTypeImpl(null, rawType, type);
 	}

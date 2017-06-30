@@ -24,7 +24,7 @@ import java.util.Locale;
 
 /**
  *
- * 
+ *
  * @author Luki
  */
 public class NetStatusUtils {
@@ -38,7 +38,7 @@ public class NetStatusUtils {
 	 * <LI>CMWAP</LI><BR/>
 	 * <LI>CMNET</LI><BR/>
 	 * </B>
-	 * 
+	 *
 	 * @author Luki
 	 */
 	public enum NetType {
@@ -54,7 +54,7 @@ public class NetStatusUtils {
 
 	/**
 	 * get current net type
-	 * 
+	 *
 	 * @return <LI>NONE ：not network</LI><BR>
 	 *         <LI>WIFI ：WIFI</LI><BR>
 	 *         <LI>CMWAP：WAP</LI><BR>

@@ -65,7 +65,6 @@ public class MathUtils {
 	public static boolean isZeroPrice(double d) {
 		return d < 0.01;
 	}
-
 	public static BigDecimal add(Number a, Number b) {
 		return add(String.valueOf(a), String.valueOf(b));
 	}
@@ -96,6 +95,62 @@ public class MathUtils {
 
 	public static BigDecimal multiply(String a, String b) {
 		return new BigDecimal(a).multiply(new BigDecimal(b));
+	}
+
+	public static class Helper {
+		private BigDecimal a;
+
+		public Helper(Number a) {
+			this(String.valueOf(a));
+		}
+
+		public Helper(String a) {
+			this.a = new BigDecimal(a);
+		}
+
+		public Helper add(Number b) {
+			this.add(String.valueOf(b));
+			return this;
+		}
+
+		public Helper add(String b) {
+			a = MathUtils.add(a, new BigDecimal(b));
+			return this;
+		}
+
+		public Helper sub(Number b) {
+			this.sub(String.valueOf(b));
+			return this;
+		}
+
+		public Helper sub(String b) {
+			a = MathUtils.sub(a, new BigDecimal(b));
+			return this;
+		}
+
+		public Helper div(Number b) {
+			this.div(String.valueOf(b));
+			return this;
+		}
+
+		public Helper div(String b) {
+			a = MathUtils.div(a, new BigDecimal(b));
+			return this;
+		}
+
+		public Helper multiply(Number b) {
+			this.multiply(String.valueOf(b));
+			return this;
+		}
+
+		public Helper multiply(String b) {
+			a = MathUtils.multiply(a, new BigDecimal(b));
+			return this;
+		}
+
+		public BigDecimal result() {
+			return a;
+		}
 	}
 
 

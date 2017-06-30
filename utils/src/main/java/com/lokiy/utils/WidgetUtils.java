@@ -129,7 +129,8 @@ public class WidgetUtils {
 		INTEGER,
 		ID,
 		ANIM,
-		DIMEN
+		DIMEN,
+		MIPMAP
 	}
 
 }
