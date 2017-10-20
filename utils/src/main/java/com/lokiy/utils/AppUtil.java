@@ -187,10 +187,18 @@ public class AppUtil {
 
 	public static String getDeviceId(Context context) {
 		try {
-			if (tm == null) {
-				tm = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+			SharedPreferences sharedPreferences = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+			String deviceId = sharedPreferences.getString("_deviceId", "");
+			if (deviceId.equals("")) {
+				SharedPreferences.Editor editor = sharedPreferences.edit();
+				if (tm == null) {
+					tm = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+				}
+				deviceId = tm.getDeviceId();
+				editor.putString("deviceId", deviceId).apply();
+				return deviceId;
 			}
-			return tm.getDeviceId();
+			return  deviceId;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "";
@@ -199,10 +207,18 @@ public class AppUtil {
 
 	public static String getSimSerialNumber(Context context) {
 		try {
-			if (tm == null) {
-				tm = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+			SharedPreferences sharedPreferences = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+			String simSerialNumber = sharedPreferences.getString("_simSerialNumber", "");
+			if (simSerialNumber.equals("")) {
+				SharedPreferences.Editor editor = sharedPreferences.edit();
+				if (tm == null) {
+					tm = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+				}
+				simSerialNumber= tm.getSimSerialNumber();
+				editor.putString("simSerialNumber", simSerialNumber).apply();
+				return simSerialNumber;
 			}
-			return tm.getSimSerialNumber();
+			return  simSerialNumber;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "";

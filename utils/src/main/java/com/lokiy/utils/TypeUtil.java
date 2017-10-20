@@ -28,7 +28,7 @@ import java.util.Arrays;
  * TypeUtil
  * Created by Luki on 2016/8/10.
  * Version:1
- * modify from {@link com.google.gson.internal.$Gson$Types}
+ * modify from com.google.gson.internal.$Gson$Types
  */
 public class TypeUtil {
 
@@ -41,6 +41,8 @@ public class TypeUtil {
 	/**
 	 * Returns the type from super class's type parameter in {@link #canonicalize
 	 * canonical form}.
+	 * @param subclass class
+	 * @return  type
 	 */
 	public static Type getSuperclassTypeParameter(Class<?> subclass) {
 		Type superclass = subclass.getGenericSuperclass();

@@ -21,7 +21,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * MD5生成
  *
- * @author Luki
+ * @author Lokiy
  */
 public class MD5 {
 

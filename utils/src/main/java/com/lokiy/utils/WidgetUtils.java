@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author Luki
+ * @author Lokiy
  */
 @SuppressWarnings("ALL")
 public class WidgetUtils {

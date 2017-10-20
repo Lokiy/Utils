@@ -36,7 +36,10 @@ public final class XLog {
 		DEBUG = true;
 	}
 
-	/** is Enable logger */
+	/**
+	 * is Enable logger
+	 * @return is debug
+	 */
 	public static boolean isLogging() {
 		return DEBUG;
 	}

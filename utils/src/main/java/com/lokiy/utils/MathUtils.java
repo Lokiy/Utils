@@ -52,7 +52,7 @@ public class MathUtils {
 	 * @param lat2 lat2
 	 * @param longt2 longt2
 	 * @return distance of two points
-	 * @throws Exception
+	 * @throws Exception Exception
 	 */
 	public static double distance(double lat1, double longt1, double lat2, double longt2) throws Exception {
 		double x, y, distance;

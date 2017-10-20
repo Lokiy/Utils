@@ -25,19 +25,19 @@ import java.util.Locale;
 /**
  *
  *
- * @author Luki
+ * @author Lokiy
  */
 public class NetStatusUtils {
 
 	private static ConnectivityManager connectivityManager;
 
 	/**
-	 * new Type<BR/>
-	 * <B> <LI>NONE</LI><BR/>
-	 * <LI>WIFI</LI> <BR/>
-	 * <LI>CMWAP</LI><BR/>
-	 * <LI>CMNET</LI><BR/>
-	 * </B>
+	 * new Type<br>
+	 * <b> <li>NONE</li><br>
+	 * <li>WIFI</li> <br>
+	 * <li>CMWAP</li><br>
+	 * <li>CMNET</li><br>
+	 * </b>
 	 *
 	 * @author Luki
 	 */
@@ -48,6 +48,10 @@ public class NetStatusUtils {
 		CMNET
 	}
 
+	/**
+	 * int
+	 * @param context context
+	 */
 	public static void init(Context context) {
 		connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 	}
@@ -55,10 +59,10 @@ public class NetStatusUtils {
 	/**
 	 * get current net type
 	 *
-	 * @return <LI>NONE ：not network</LI><BR>
-	 *         <LI>WIFI ：WIFI</LI><BR>
-	 *         <LI>CMWAP：WAP</LI><BR>
-	 *         <LI>CMNET：NET</LI>
+	 * @return <li>NONE ：not network</li><br>
+	 *         <li>WIFI ：WIFI</li><br>
+	 *         <li>CMWAP：WAP</li><br>
+	 *         <li>CMNET：NET</li>
 	 */
 	public static NetType getNetworkType() {
 		check();
@@ -84,7 +88,7 @@ public class NetStatusUtils {
 	}
 
 	/**
-	 *
+	 * is network connected
 	 * @return is network connected
 	 */
 	public static boolean isNetworkConnected() {
@@ -101,11 +105,11 @@ public class NetStatusUtils {
 
 	/**
 	 * 获取网络状态
-	 *
-	 * @return  1 WIFI<BR>
-	 * 			2 2G<BR>
-	 * 			3 3G<BR>
-	 * 			4 4G<BR>
+	 * @param  context context
+	 * @return  1 WIFI<br>
+	 * 			2 2G<br>
+	 * 			3 3G<br>
+	 * 			4 4G<br>
 	 * 			0 NONE
 	 */
 	public static String getNetworkType(Context context) {

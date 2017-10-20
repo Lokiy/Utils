@@ -32,6 +32,9 @@ public class UIUtils {
 
 	/**
 	 * dp to px
+	 * @param context context
+	 * @param dp dpValue
+	 * @return px value
 	 */
 	public static int dp2px(Context context, float dp) {
 		float scale = context.getResources().getDisplayMetrics().density;
@@ -40,6 +43,9 @@ public class UIUtils {
 
 	/**
 	 * px to dp
+	 * @param context context
+	 * @param px spValue
+	 * @return dip value
 	 */
 	public static int px2dp(Context context, int px) {
 		float scale = context.getResources().getDisplayMetrics().density;
@@ -48,6 +54,9 @@ public class UIUtils {
 
 	/**
 	 * sp to px
+	 * @param context context
+	 * @param spValue spValue
+	 * @return px value
 	 */
 	public static int sp2px(Context context, float spValue) {
 		final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
@@ -56,6 +65,8 @@ public class UIUtils {
 
 	/**
 	 * screen width
+	 * @param context context
+	 * @return    screenWidth
 	 */
 	public static int screenWidth(Context context) {
 		return context.getResources().getDisplayMetrics().widthPixels;
@@ -63,6 +74,8 @@ public class UIUtils {
 
 	/**
 	 * screen height
+	 * @param context context
+	 * @return    screenHeight
 	 */
 	public static int screenHeight(Context context) {
 		return context.getResources().getDisplayMetrics().heightPixels;
@@ -70,6 +83,8 @@ public class UIUtils {
 
 	/**
 	 * hide inputmethod
+	 * @param view view
+	 * @return    hideInputMethod
 	 */
 	public static boolean hideInputMethod(View view) {
 		if (view == null) {
@@ -83,6 +98,8 @@ public class UIUtils {
 
 	/**
 	 * show inputmethod
+	 * @param view view
+	 * @return    showInputMethod
 	 */
 	public static boolean showInputMethod(final View view) {
 		if (view == null) {
@@ -98,6 +115,7 @@ public class UIUtils {
 
 	/**
 	 * toggle inputmethod
+	 * @param context context
 	 */
 	public static void toggleInputMethod(Context context) {
 		if (imm == null) {
@@ -108,6 +126,8 @@ public class UIUtils {
 
 	/**
 	 * is inputmethod active
+	 * @param context context
+	 * @return isInputMethodActive
 	 */
 	public static boolean isInputMethodActive(Context context) {
 		if (imm == null) {

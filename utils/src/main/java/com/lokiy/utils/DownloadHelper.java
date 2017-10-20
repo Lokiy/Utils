@@ -54,8 +54,8 @@ public class DownloadHelper {
 	public DownloadHelper(Context context, DownloadBean bean) {
 		this.context = context;
 		this.downloadBean = bean;
-		ACTION_FINISH = context.getPackageName() + ".luki.broadcast.download_file.helper.finish";
-		ACTION_CHANGE = context.getPackageName() + ".luki.broadcast.download_file.helper.change";
+		ACTION_FINISH = context.getPackageName() + ".lokiy.broadcast.download_file.helper.finish";
+		ACTION_CHANGE = context.getPackageName() + ".lokiy.broadcast.download_file.helper.change";
 		check();
 	}
 

@@ -34,7 +34,7 @@ public class ReflectUtils {
 	 * @param field filed
 	 * @return field value
 	 *
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public static Object getFieldValue(Object item, String field) throws Exception {
 		Class<?> cls = item.getClass();
@@ -57,7 +57,7 @@ public class ReflectUtils {
 	 * @param item item
 	 * @param field field
 	 *
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public static void setFieldValue(Object item, String field, Object value) throws Exception {
 		Class<?> cls = item.getClass();
@@ -81,7 +81,7 @@ public class ReflectUtils {
 	 * @param method method
 	 * @return method value
 	 *
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public static Object getMethodValue(Object item, String method) throws Exception {
 		Class<?> cls = item.getClass();
@@ -104,7 +104,7 @@ public class ReflectUtils {
 	 * @param className className
 	 * @return forName
 	 *
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	public static Object getClassInstance(String className) throws Exception {
 		Class<?> cls = Class.forName(className);
@@ -123,6 +123,12 @@ public class ReflectUtils {
 				type == short.class || type == Byte[].class || type == byte[].class || type == boolean.class || type == Boolean.class;
 	}
 
+	/**
+	 *
+	 * @param field field
+	 * @param <T> t
+	 * @return class
+	 */
 	@SuppressWarnings("unchecked")
 	public static <T> Class<T> getFieldClass(Field field) {
 		Class<?> type2 = field.getType();
@@ -151,6 +157,12 @@ public class ReflectUtils {
 		}
 	}
 
+	/**
+	 *
+	 * @param clazz class
+	 * @param name field name
+	 * @return field
+	 */
 	public static Field getField(Class<?> clazz, String name) {
 		Field field = null;
 		try {
@@ -163,6 +175,17 @@ public class ReflectUtils {
 		return field;
 	}
 
+	/**
+	 *  load class
+	 * @param context context
+	 * @param className className
+	 * @param filePath filePath
+	 * @param fileName fileName
+	 * @param clazz clazz
+	 * @param defaultClazz defaultClazz
+	 * @param <T> t
+	 * @return class
+	 */
 	@SuppressWarnings({
 			"unchecked",
 			"unused"
