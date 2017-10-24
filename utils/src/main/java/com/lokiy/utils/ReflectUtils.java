@@ -79,19 +79,20 @@ public class ReflectUtils {
 	/**
 	 * @param item item
 	 * @param method method
+	 * @param parameterTypes parameterTypes
 	 * @return method value
 	 *
 	 * @throws Exception exception
 	 */
-	public static Object getMethodValue(Object item, String method) throws Exception {
+	public static Object getMethodValue(Object item, String method, Class<?>... parameterTypes) throws Exception {
 		Class<?> cls = item.getClass();
 		Method m = null;
 		try {
-			m = cls.getDeclaredMethod(method);
+			m = cls.getDeclaredMethod(method, parameterTypes);
 		} catch (Exception ignored) {
 		}
 		if (m == null) {
-			m = cls.getMethod(method);
+			m = cls.getMethod(method, parameterTypes);
 		}
 		if (m == null) {
 			throw new NullPointerException("can't find method " + method + " in Class " + item.getClass());
@@ -173,6 +174,30 @@ public class ReflectUtils {
 			}
 		}
 		return field;
+	}
+
+	/**
+	 * @param cls class
+	 * @param method method
+	 * @param parameterTypes parameterTypes
+	 * @return method value
+	 *
+	 * @throws Exception exception
+	 */
+	public static Method getMethod(Class<?> cls, String method, Class<?>... parameterTypes) throws Exception {
+		Method m = null;
+		try {
+			m = cls.getDeclaredMethod(method, parameterTypes);
+		} catch (Exception ignored) {
+		}
+		if (m == null) {
+			m = cls.getMethod(method, parameterTypes);
+		}
+		if (m == null) {
+			throw new NullPointerException("can't find method " + method + " in Class " + cls);
+		}
+		m.setAccessible(true);
+		return m;
 	}
 
 	/**

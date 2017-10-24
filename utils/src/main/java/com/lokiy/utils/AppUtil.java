@@ -9,7 +9,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.ClipboardManager;
+import android.text.TextUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@SuppressWarnings("ALL")
 public class AppUtil {
 	private static TelephonyManager tm;
 
@@ -187,16 +190,30 @@ public class AppUtil {
 
 	public static String getDeviceId(Context context) {
 		try {
-			SharedPreferences sharedPreferences = context.getSharedPreferences("config", Context.MODE_PRIVATE);
-			String deviceId = sharedPreferences.getString("_deviceId", "");
-			if (deviceId.equals("")) {
-				SharedPreferences.Editor editor = sharedPreferences.edit();
-				if (tm == null) {
-					tm = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+			String deviceId = null;
+			if (SDCardUtil.isSDCARDMounted(context)) {
+				try {
+					deviceId = FileUtils.readSDCard(new File(SDCardUtil.getTempPath(context), "_deviceId"));
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-				deviceId = tm.getDeviceId();
-				editor.putString("deviceId", deviceId).apply();
-				return deviceId;
+				if (TextUtils.isEmpty(deviceId)) {
+					SharedPreferences sharedPreferences = context.getSharedPreferences("config", Context.MODE_PRIVATE);
+					deviceId = sharedPreferences.getString("_deviceId", "");
+					if ("".equals(deviceId)) {
+						SharedPreferences.Editor editor = sharedPreferences.edit();
+						if (tm == null) {
+							tm = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+						}
+						deviceId = tm.getDeviceId();
+						editor.putString("deviceId", deviceId).apply();
+						try {
+							FileUtils.saveToSDCard(context, new File(SDCardUtil.getTempPath(context), "_deviceId"), deviceId);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
 			}
 			return  deviceId;
 		} catch (Exception e) {
@@ -209,7 +226,7 @@ public class AppUtil {
 		try {
 			SharedPreferences sharedPreferences = context.getSharedPreferences("config", Context.MODE_PRIVATE);
 			String simSerialNumber = sharedPreferences.getString("_simSerialNumber", "");
-			if (simSerialNumber.equals("")) {
+			if ("".equals(simSerialNumber)) {
 				SharedPreferences.Editor editor = sharedPreferences.edit();
 				if (tm == null) {
 					tm = (TelephonyManager) context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
