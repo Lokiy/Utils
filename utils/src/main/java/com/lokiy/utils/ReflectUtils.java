@@ -80,11 +80,12 @@ public class ReflectUtils {
 	 * @param item item
 	 * @param method method
 	 * @param parameterTypes parameterTypes
+	 * @param args args
 	 * @return method value
 	 *
 	 * @throws Exception exception
 	 */
-	public static Object getMethodValue(Object item, String method, Class<?>... parameterTypes) throws Exception {
+	public static Object getMethodValue(Object item, String method, Class<?>[] parameterTypes, Object... args) throws Exception {
 		Class<?> cls = item.getClass();
 		Method m = null;
 		try {
@@ -98,7 +99,7 @@ public class ReflectUtils {
 			throw new NullPointerException("can't find method " + method + " in Class " + item.getClass());
 		}
 		m.setAccessible(true);
-		return m.invoke(item);
+		return m.invoke(item, args);
 	}
 
 	/**
