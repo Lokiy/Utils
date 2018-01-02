@@ -17,7 +17,6 @@ import android.os.Handler;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import java.util.Locale;
 import java.util.Timer;
 
 /**
@@ -110,7 +109,7 @@ public class UIUtils {
 		}
 		view.requestFocusFromTouch();
 		view.requestFocus();
-		return imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
+		return imm.showSoftInput(view, 0);
 	}
 
 	/**
@@ -135,4 +134,34 @@ public class UIUtils {
 		}
 		return imm.isActive();
 	}
+
+	/**
+	 * 获取导航栏高度
+	 */
+	public static int getNavigationBarHeight(Context context) {
+		int rid = context.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+		if (rid != 0 && context.getResources().getBoolean(rid)) {
+			int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+			return context.getResources().getDimensionPixelSize(resourceId);
+		} else
+			return 0;
+	}
+
+	/**
+	 * //透明状态栏
+	 * getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+	 * //透明导航栏
+	 * getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+	 *
+	 * 获取状态栏高度
+	 */
+	public static int getStatusBarHeight(Context context) {
+		int result = 0;
+		int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+		if (resourceId > 0) {
+			result = context.getResources().getDimensionPixelSize(resourceId);
+		}
+		return result;
+	}
+
 }
