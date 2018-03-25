@@ -33,6 +33,7 @@ public class DBSelection<T extends Serializable> {
 	private List<Field> uniqueSelections = new ArrayList<Field>();
 	public String[] selectionArgs;
 	public String orderBy;
+	public String limit;
 
 	public DBSelection<T> fillIn(T t) {
 		selectionArgs = new String[uniqueSelections.size()];

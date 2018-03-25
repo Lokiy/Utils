@@ -333,7 +333,7 @@ public class DBUtils {
 			}
 			String[] selectionArgs = selection.selectionArgs;
 			if (XLog.isLogging()) {
-				String sql = SQLiteQueryBuilder.buildQueryString(false, table.tableName, null, selection.selection, null, null, selection.orderBy, null);
+				String sql = SQLiteQueryBuilder.buildQueryString(false, table.tableName, null, selection.selection, null, null, selection.orderBy, selection.limit);
 				if (selectionArgs != null) {
 					sql = sql.replace("?", "%s");
 					Object[] dest = new Object[selectionArgs.length];
@@ -344,7 +344,7 @@ public class DBUtils {
 				}
 			}
 
-			c = db.query(table.tableName, null, selection.selection, selectionArgs, null, null, selection.orderBy);
+			c = db.query(table.tableName, null, selection.selection, selectionArgs, null, null, selection.orderBy, selection.limit);
 			if (null != c && c.getCount() > 0) {
 				while (c.moveToNext()) {
 					T t = getObject(clazz, c);
@@ -802,17 +802,37 @@ public class DBUtils {
 					columnValue = DESUtil.decrypt(columnValue, columnName);
 				}
 				if (f.getGenericType() == Long.class || f.getGenericType() == long.class) {
-					v = Long.valueOf(columnValue);
+					try {
+						v = Long.valueOf(columnValue);
+					} catch (NumberFormatException e) {
+						v = 0;
+					}
 				} else if (f.getGenericType() == String.class) {
 					v = String.valueOf(columnValue);
 				} else if (f.getGenericType() == Double.class || f.getGenericType() == double.class) {
-					v = Double.valueOf(columnValue);
+					try {
+						v = Double.valueOf(columnValue);
+					} catch (NumberFormatException e) {
+						v = 0;
+					}
 				} else if (f.getGenericType() == Integer.class || f.getGenericType() == int.class) {
-					v = Integer.valueOf(columnValue);
+					try {
+						v = Integer.valueOf(columnValue);
+					} catch (NumberFormatException e) {
+						v = 0;
+					}
 				} else if (f.getGenericType() == Float.class || f.getGenericType() == float.class) {
-					v = Float.valueOf(columnValue);
+					try {
+						v = Float.valueOf(columnValue);
+					} catch (NumberFormatException e) {
+						v = 0;
+					}
 				} else if (f.getGenericType() == Short.class || f.getGenericType() == short.class) {
-					v = Short.valueOf(columnValue);
+					try {
+						v = Short.valueOf(columnValue);
+					} catch (NumberFormatException e) {
+						v = 0;
+					}
 				} else if (f.getGenericType() == Boolean.class || f.getGenericType() == boolean.class) {
 					v = Boolean.valueOf(columnValue);
 				} else if (f.getGenericType() == Byte[].class || f.getGenericType() == byte[].class) {

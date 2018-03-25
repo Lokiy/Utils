@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Utils.iml" filepath="$PROJECT_DIR$/Utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Utils.iml" filepath="$PROJECT_DIR$/.idea/Utils.iml" />
+      <module fileurl="file://C:\Users\Lokiy\StudioProjects\Utils\Utils.iml" filepath="C:\Users\Lokiy\StudioProjects\Utils\Utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils/utils.iml" filepath="$PROJECT_DIR$/utils/utils.iml" />
     </modules>
